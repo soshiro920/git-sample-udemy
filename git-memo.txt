@@ -1,0 +1,47 @@
+■ローカルリポジトリ作成
+・作業ディレクトリに移動 
+cd ~
+
+・新しいローカルリポジトリ作成
+git init
+
+■ファイル追加 (「.」はすべてのフォルダ・ファイル)
+git add .
+
+■リポジトリに変更内容登録 (-mはコメント)
+git commit -m "コメント入力"
+
+■ブランチ設定
+memo : ブランチは履歴の流れを分岐して記録していくための機能。
+既存のブランチから新しいブランチを作成し、元のコードに影響を与えることなく、開発やバグ修正を試すことができる。
+
+・ブランチ確認
+git branch
+
+・ブランチ名変更 
+#現在のブランチ名をmainに変更
+git branch -M main
+#ブランチmasterをブランチmainに名前変更
+git branch -M master main
+memo : オプションが小文字のmの場合は同名ブランチがあると失敗する。大文字Mの場合は強制。
+
+■リモート リポジトリの追加
+git remote add [追加するリモートリポジトリ名] [追加したいリモートリポジトリURL]
+git remote add origin https://github.com/soshiro920/git-sample-udemy.git
+
+■githubにアップロード
+ローカルリポジトリの現在のブランチ(main)の上流を origin/mainに規定
+git push -u origin main
+
+2回目からはgit pushのみでよい
+git push
+
+memo : 以下のコマンドでブランチの確認可能
+##
+上流ブランチの設定確認
+git branch -vv
+
+上流ブランチの変更
+git branch -u リモートリポジトリ名/ブランチ
+git branch -u onrgin/main
+##
