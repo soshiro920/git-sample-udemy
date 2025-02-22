@@ -5,10 +5,10 @@ cd ~
 ・新しいローカルリポジトリ作成
 git init
 
-■ファイル追加 (「.」はすべてのフォルダ・ファイル)
+■ファイル追加 add (「.」はすべてのフォルダ・ファイル)
 git add .
 
-■リポジトリに変更内容登録 (-mはコメント)
+■リポジトリに変更内容登録 commit (-mはコメント)
 git commit -m "コメント入力"
 
 ■ブランチ設定
@@ -25,15 +25,18 @@ git branch -M main
 git branch -M master main
 memo : オプションが小文字のmの場合は同名ブランチがあると失敗する。大文字Mの場合は強制。
 
-■リモート リポジトリの追加
+■リモートリポジトリの追加 (設定していない場合、git push前に追加する必要がある)
 git remote add [追加するリモートリポジトリ名] [追加したいリモートリポジトリURL]
 git remote add origin https://github.com/soshiro920/git-sample-udemy.git
 
-■githubにアップロード
-ローカルリポジトリの現在のブランチ(main)の上流を origin/mainに規定
+#リモートリポジトリ確認
+git remote -v
+
+■githubにアップロード push
+・ローカルリポジトリの現在のブランチ(main)の上流を-uでorigin/mainに規定 
 git push -u origin main
 
-2回目からはgit pushのみでよい
+・2回目からはgit pushのみでよい
 git push
 
 memo : 以下のコマンドでブランチの確認可能
@@ -45,3 +48,6 @@ git branch -vv
 git branch -u リモートリポジトリ名/ブランチ
 git branch -u onrgin/main
 ##
+
+memo : GitHubにアップしたくないファイル・フォルダがある場合、「.gitignore」に記載しておく
+
