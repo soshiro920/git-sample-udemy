@@ -6,6 +6,7 @@ cd ~
 git init
 
 ■ファイル追加 add (「.」はすべてのフォルダ・ファイル)
+git add [ファイル名]
 git add .
 
 ■リポジトリに変更内容登録 commit (-mはコメント)
@@ -18,13 +19,25 @@ memo : ブランチは履歴の流れを分岐して記録していくための�
 ・ブランチ確認
 git branch
 
+・ブランチ作成
+git branch [新しいブランチ名]
+
 ・ブランチ名変更 
-#現在のブランチ名をmainに変更
-git branch -M main
-#ブランチmasterをブランチmainに名前変更
-git branch -M master main
+#現在のブランチ名をブランチAに変更
+git branch -m ブランチA
+#ブランチAをブランチBに名前変更
+git branch -m ブランチA ブランチB
 memo : オプションが小文字のmの場合は同名ブランチがあると失敗する。大文字Mの場合は強制。
 
+・ブランチ切り替え
+git switch [ブランチ名]
+#新ブランチ作成＋切り替え
+switch -c [新しいブランチ名]
+
+・ブランチ削除
+git branch -d [削除したいブランチ名]
+
+・2回目からはgit
 ■リモートリポジトリの追加 (設定していない場合、git push前に追加する必要がある)
 git remote add [追加するリモートリポジトリ名] [追加したいリモートリポジトリURL]
 git remote add origin https://github.com/soshiro920/git-sample-udemy.git
@@ -34,7 +47,7 @@ git remote -v
 
 ■githubにアップロード push
 ・ローカルリポジトリの現在のブランチ(main)の上流を-uでorigin/mainに規定 
-git push -u origin main
+git push -u origin [ブランチ名]
 
 ・2回目からはgit pushのみでよい
 git push
