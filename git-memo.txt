@@ -120,5 +120,6 @@ git pull [リモートリポジトリ名] [ブランチ名]  #リモート側か
 
 ・差分ダウンロードのみ (git fetch)
 memo : git fetchするとリモート追跡リポジトリが更新される。(ローカル側でリモート側の状況を監視しているもの)
+git branch -a  #リモート追跡用のブランチ確認(remotes/origin/main 等が表示される)
 git fetch   #差分確認
 
