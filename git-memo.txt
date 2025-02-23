@@ -80,5 +80,10 @@ mergeする前にコードチェックしたい
 4.Confirm merge をクリック
 5.プルリクエストがマージ&クローズされる
 
-
+■ブランチのマージ(ローカル側)
+・マージされたいブランチになっている状態で
+git merge ブランチ名
+例)ブランチmainにブランチsubをマージ main←sub
+git switch main
+git merge sub
 
