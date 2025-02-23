@@ -135,8 +135,85 @@ git merge remotes/origin/main
 
 ■取り消し系のコマンド
 ・addしていないコードを消したい
-git clean
-git reset
+git clean -f [ファイル名]	#新規作成ファイルを消す
+git restore [ファイル名]	#ファイル変更を取り消す
+git restore .	#全ファイルの変更を取り消す
+
+memo : リモート追跡ブランチとの差分を見ている。VScodeでは、[ソース管理]-[変更]で該当のファイルで[変更を破棄]することで同じことを実施可能。
+
+・addを取り消す
+git restore --staged [ファイル名]	#ファイル取り消し
+git restore --staged .	#add全て取り消し
+git reset [ファイル名]	#ファイル取り消し
+git reset .	#add全て取り消し
+
+memo : VScodeでは、[ソース管理]-[ステージングされている変更]で該当のファイルで[変更のステージング解除]することで同じことを実施可能。
+
+・commitを取り消す
+memo : HEADは現在の状態。resetはcommitをなかったことにする。
+git reset --soft HEAD^	#staging状態まで戻す(commit前)
+git reset --sof [コミットid] #コミットidを指定して戻すことも可能だが、現在ではなく1つ前のidを指定
+git reset --mixed HEAD^	#add前まで戻す(ファイルは変更されている状態のまま)
+git reset --hard HEAD^	#ファイル変更を取り消す(新しく作成していたファイルの場合は消える)
+
+memo : 戻るのは現在の状態 → soft(staging) → mixed(add前) → hard = 以前の更新ポイント
+
+・pushを取り消す
+memo : pushの取り消しはresetとrevertがあり以下のイメージ
+###
+reset : コミット毎削除 (コミット履歴を残さない)
+〇→〇→〇→●	#push
+〇→〇→〇←🔵	#コミット削除
+
+revert : 打消しコミットを作る (コミット履歴を残す)
+〇→〇→〇→●		#push
+〇→〇→〇→●→🔵	#取り消しコミットの作成
+###
+revertの場合
+git revert [コミットid]		#取り消しコミットの作成。コミットidはGitGraphや[git log --oneline]等で確認可
+git push	 #取り消しコミットのプッシュ
+
+resetの場合
+git reset --soft [コミットid]	#コミットid部分は現在のidではなく過去のidまたはHEAD^でも可
+git push -f 	#強制push
+
+・pull requestを取り消す(GitHub側)
+プルリク前後に取り消す場合(マージ前)
+git push --delete origin [ブランチ名]	#ブランチ削除
+
+mergeしたプルリクを取り消す場合(マージ後)
+GitHubの取り消したいPull request画面で[Revert]を実行、Revertのプルリクがopenされるのでそれをマージする。
+
+
+・ローカルマージの取り消し(ローカル側)
+memo : push取り消しと同様reset(履歴残さない)とrevert(履歴残す)でマージ取り消しが可能
+git merge [ブランチ名]	#マージ
+
+revertの場合
+git revert -m 1 [コミットid]	#履歴残す。数字はgit showやgit logで確認(1か2)
+
+例)git show (Merge部分の最初が1、次が2)
+###
+git show
+commit 8c5161126a8885e1431b8071bd2a31a0ce87decc (HEAD -> 
+main)
+Merge: 7bcd00d b1654cd
+Author: soshiro920 <oshiro4078@outlook.jp>
+Date:   Mon Feb 24 02:49:07 2025 +0900
+
+    Merge branch 'practice'
+###
+memo : git revertでマージ取り消し後、同じブランチで再度git mergeはできない(差分がない)。何か変更する必要がある。
+
+resetの場合
+git reset --hard ORIG_HEAD	#履歴残さない
+
+・commitコメントを修正
+最新コミットのコメントを修正する
+git commit --amend -m "修正後のコメント"
+
+
+
 
 
 
