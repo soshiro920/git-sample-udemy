@@ -87,3 +87,22 @@ git merge ブランチ名
 git switch main
 git merge sub
 
+■補助系のコマンド
+・コミット対象のファイル確認 (Vscodeでは同じような内容を拡張機能Git Graphで確認可能)
+git status
+
+・全コミットログ (Vscodeでは同じような内容を拡張機能Git Graphで確認可能)
+git log
+git log --oneline  #見やすい表示
+git log --graph #グラフ化  onelineとgraph同時に使用も可
+
+・設定確認
+git config
+
+・gitバージョン確認
+git --version
+
+・変更点を確認
+git diff #コミット後に変更した場合、差分が見れる
+git diff [ブランチ名] [ブランチ名] #ブランチの比較
+git diff [コミットid] [コミットid] #2コミット間の比較
