@@ -73,7 +73,7 @@ mergeする前にコードチェックしたい
 確認した内容をコメントしたい
 確認okなら合わせる(merge)
 ###
-・プルリクエストの流れ
+・プルリクエストの流れ(github側)
 1.compare&pull Request ブランチ比較
 2.create pull Request プルリクエスト作成
 3.コード比較され問題なければ Merge pull Requestをクリック
