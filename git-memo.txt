@@ -64,3 +64,21 @@ git branch -u onrgin/main
 
 memo : GitHubにアップしたくないファイル・フォルダがある場合、「.gitignore」に記載しておく
 
+■プルリクエスト
+memo : 以下のような機能がある
+###
+異なるブランチを合わせたい(merge)
+コードがぶつかっていないか自動チェック(コンフリクト)
+mergeする前にコードチェックしたい
+確認した内容をコメントしたい
+確認okなら合わせる(merge)
+###
+・プルリクエストの流れ
+1.compare&pull Request ブランチ比較
+2.create pull Request プルリクエスト作成
+3.コード比較され問題なければ Merge pull Requestをクリック
+4.Confirm merge をクリック
+5.プルリクエストがマージ&クローズされる
+
+
+
