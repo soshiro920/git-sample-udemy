@@ -117,9 +117,27 @@ git clone -b [ブランチ名] [gitHubのurl] [ダウンロード先のフォル
 
 ・差分ダウンロード+マージ (git pull)
 git pull [リモートリポジトリ名] [ブランチ名]  #リモート側から差分ダウンロードしてマージ
+例)
+git pull origin main
 
 ・差分ダウンロードのみ (git fetch)
 memo : git fetchするとリモート追跡リポジトリが更新される。(ローカル側でリモート側の状況を監視しているもの)
 git branch -a  #リモート追跡用のブランチ確認(remotes/origin/main 等が表示される)
-git fetch   #差分確認
+git fetch [リモートリポジトリ名] [ブランチ名]   #差分確認
+例)
+git fetch origin main
+memo : 差分ダウンロードのみでマージはされないため、git diffやgit logで差分が確認できる(git diff remotes/origin/main)。VScodeのGitGraphでも確認可。
+
+・差分ダウンロード後、マージする
+git merge [ブランチ名]
+例)
+git merge remotes/origin/main
+
+■取り消し系のコマンド
+・addしていないコードを消したい
+git clean
+git reset
+
+
+
 
